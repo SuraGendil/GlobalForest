@@ -11,6 +11,7 @@ def forest_helper(forest) -> dict:
         "id": str(forest["_id"]),
         "country": forest["country"],
         "driver": forest["driver"],
+        "threshold": forest["threshold"],
         "year": forest["year"],
         "loss": forest["loss"],
         "created_at": forest.get("created_at"),

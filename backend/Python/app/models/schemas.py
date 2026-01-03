@@ -9,6 +9,7 @@ class ForestLogBase(BaseModel):
     driver: str = Field(..., description="Penyebab utama (misal: Fire, Logging)")
     year: int = Field(..., gt=1900, description="Tahun kejadian")
     loss: float = Field(..., gt=0, description="Luas hutan yang hilang (Hektar)")
+    threshold: int = Field(..., gt=0, description="Ambang batas deteksi")
 
 # 2. Skema untuk Input Data (Create)
 class ForestLogCreate(ForestLogBase):
