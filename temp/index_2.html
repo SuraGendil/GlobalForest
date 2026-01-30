@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Forest</title>
+  </head>
+  <body onload="loadData()">
+    <h1>Forest Data CRUD</h1>
+
+    <!-- Read Table -->
+    <h2>Data Table (Expandable)</h2>
+    <button onclick="openModal('create')">Create New Data</button>
+    <button onclick="loadData()">Refresh Data</button>
+    <table id="dataTable">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0)">Country</th>
+          <th>Drivers & Losses</th>
+          <th>Actions (Country)</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <!-- Create Modal -->
+    <div id="createModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('create')">&times;</span>
+        <h2>Create/Append Data</h2>
+        <form id="createForm">
+          <label
+            >Country: <input type="text" id="createCountry" required
+          /></label>
+          <label
+            >Driver: <input type="text" id="createDriver" required
+          /></label>
+          <div id="lossesContainer">
+            <div class="loss-entry">
+              <label>Year: <input type="number" class="year" required /></label>
+              <label
+                >tc_loss_ha:
+                <input type="number" class="ha" required step="0.01"
+              /></label>
+            </div>
+          </div>
+          <button type="button" onclick="addLossEntry('lossesContainer')">
+            Add More Loss
+          </button>
+          <button type="submit">Create/Append</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Update Modal -->
+    <div id="updateModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('update')">&times;</span>
+        <h2>Update Data</h2>
+        <form id="updateForm">
+          <label>Country: <input type="text" id="updateCountry" /></label>
+          <label>Driver: <input type="text" id="updateDriver" /></label>
+          <label>Year: <input type="number" id="updateYear" /></label>
+          <label
+            >New tc_loss_ha: <input type="number" id="updateNewHa" step="0.01"
+          /></label>
+          <button type="submit">Update</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div id="deleteModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('delete')">&times;</span>
+        <h2>Delete Data</h2>
+        <form id="deleteForm">
+          <label>Country: <input type="text" id="deleteCountry" /></label>
+          <label>Driver: <input type="text" id="deleteDriver" /></label>
+          <label>Year: <input type="number" id="deleteYear" /></label>
+          <button type="submit">Confirm Delete</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
